@@ -1304,7 +1304,7 @@ int msm_isp_update_stats_stream(struct vfe_device *vfe_dev, void *arg)
 				stream_info->framedrop_pattern = 0x0;
 			else
 				stream_info->framedrop_pattern = 0x1;
-			stream_info->framedrop_period = framedrop_period;
+			stream_info->framedrop_period = framedrop_period - 1;
 			if (stream_info->init_stats_frame_drop == 0)
 				for (k = 0; k < stream_info->num_isp; k++)
 					stream_info->vfe_dev[k]->hw_info->
