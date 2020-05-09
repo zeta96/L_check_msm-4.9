@@ -459,12 +459,11 @@ static int32_t msm_ois_control(struct msm_ois_ctrl_t *o_ctrl,
 			settings);
 
 		for (i = 0; i < set_info->ois_params.setting_size; i++) {
-			if (settings[i].i2c_operation
-				== MSM_OIS_READ) {
+			if (settings[i].i2c_operation == MSM_OIS_READ) {
 				if (copy_to_user(
 					(void __user *)
-					(&set_info->ois_params.settings[i]),
-					&settings[i],
+					(&set_info->ois_params.settings[i].reg_data),
+					&settings[i].reg_data,
 					sizeof(struct reg_settings_ois_t))) {
 					kfree(settings);
 					pr_err("Error copying\n");
