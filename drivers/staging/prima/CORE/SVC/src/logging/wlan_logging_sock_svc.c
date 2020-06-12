@@ -461,6 +461,7 @@ static int wlan_queue_pkt_stats_for_app(struct sk_buff *skb_to_free)
 	return ret;
 }
 
+#ifdef FEATURE_WLAN_DIAG_SUPPORT
 int wlan_pkt_stats_to_user(void *perPktStat)
 {
 	bool wake_up_thread = false;
@@ -593,6 +594,12 @@ int wlan_pkt_stats_to_user(void *perPktStat)
 	}
 	return 0;
 }
+#else
+__inline int wlan_pkt_stats_to_user(void *perPktStat)
+{
+	return 0;
+}
+#endif
 
 void wlan_disable_and_flush_pkt_stats()
 {
@@ -1089,7 +1096,7 @@ static int send_filled_buffers_to_user(void)
 	return ret;
 }
 
-
+#ifdef FEATURE_WLAN_DIAG_SUPPORT
 static int send_per_pkt_stats_to_user(void)
 {
 	int ret = -1;
@@ -1208,6 +1215,12 @@ err:
 
 	return ret;
 }
+#else
+static __inline int send_per_pkt_stats_to_user(void)
+{
+	return 0;
+}
+#endif
 
 /**
  * wlan_logging_thread() - The WLAN Logger thread
