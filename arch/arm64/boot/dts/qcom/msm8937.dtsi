@@ -131,6 +131,16 @@
 			no-map;
 			reg = <0x0 0x9ff00000 0x0 0x300000>;
 		};
+
+		/* global autoconfigured region for contiguous allocations */
+		linux,cma {
+			compatible = "shared-dma-pool";
+			alloc-ranges = <0 0x00000000 0 0xffffffff>;
+			reusable;
+			alignment = <0 0x400000>;
+			size = <0 0x8000000>;
+			linux,cma-default;
+		};
 	};
 
 	aliases {
