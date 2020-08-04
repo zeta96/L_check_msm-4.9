@@ -122,8 +122,9 @@
 
 		dump_mem: mem_dump_region {
 			compatible = "shared-dma-pool";
+			alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
 			reusable;
-			size = <0x400000>;
+			size = <0 0x400000>;
 		};
 
 		pstore_reserve_mem: pstore_reserve_mem_region@0 {
