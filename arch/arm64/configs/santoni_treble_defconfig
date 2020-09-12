@@ -1,4 +1,4 @@
-CONFIG_LOCALVERSION="-Luuvy-Checkmate-B.3.5.Lesion"
+CONFIG_LOCALVERSION="-Luuvy-Checkmate-B.3.6.Lesion"
 # CONFIG_LOCALVERSION_AUTO is not set
 CONFIG_SWAP=y
 # CONFIG_FHANDLE is not set
