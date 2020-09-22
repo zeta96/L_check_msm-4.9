@@ -2089,7 +2089,7 @@ static int msm_isp_cfg_ping_pong_address(
 
 	/* return if buffer already present */
 	if (stream_info->buf[!pingpong_bit]) {
-		pr_err("stream %x buffer already set for pingpong %d\n",
+		pr_debug("stream %x buffer already set for pingpong %d\n",
 			stream_info->stream_src, !pingpong_bit);
 		return 1;
 	}
