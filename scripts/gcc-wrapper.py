@@ -1,4 +1,4 @@
-#! /usr/bin/env python2
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 # Copyright (c) 2011-2017, The Linux Foundation. All rights reserved.
@@ -30,6 +30,7 @@
 # Invoke gcc, looking for warnings, and causing a failure if there are
 # non-whitelisted warnings.
 
+from __future__ import print_function
 import errno
 import re
 import os
@@ -44,14 +45,15 @@ allowed_warnings = set([
 
 # Capture the name of the object file, can find it.
 ofile = None
-
 warning_re = re.compile(r'''(.*/|)([^/]+\.[a-z]+:\d+):(\d+:)? warning:''')
+
+
 def interpret_warning(line):
     """Decode the message from gcc.  The messages we care about have a filename, and a warning"""
     line = line.rstrip('\n')
     m = warning_re.match(line)
     if m and m.group(2) not in allowed_warnings:
-        print >> sys.stderr, "error, forbidden warning:", m.group(2)
+        print("error, forbidden warning:", m.group(2), file=sys.stderr)
 
         # If there is a warning, remove any object if it exists.
         if ofile:
@@ -60,6 +62,7 @@ def interpret_warning(line):
             except OSError:
                 pass
         sys.exit(1)
+
 
 def run_gcc():
     args = sys.argv[1:]
@@ -71,24 +74,22 @@ def run_gcc():
     except (ValueError, IndexError):
         pass
 
-    compiler = sys.argv[0]
-
     try:
-        proc = subprocess.Popen(args, stderr=subprocess.PIPE)
+        proc = subprocess.Popen(args, stderr=subprocess.PIPE, encoding='utf-8')
         for line in proc.stderr:
-            print >> sys.stderr, line,
-            interpret_warning(line)
+            print(line, interpret_warning(line), file=sys.stderr)
 
         result = proc.wait()
     except OSError as e:
         result = e.errno
         if result == errno.ENOENT:
-            print >> sys.stderr, args[0] + ':',e.strerror
-            print >> sys.stderr, 'Is your PATH set correctly?'
+            print(args[0] + ':', e.strerror, file=sys.stderr)
+            print('Is your PATH set correctly?', file=sys.stderr)
         else:
-            print >> sys.stderr, ' '.join(args), str(e)
+            print(' '.join(args), str(e), file=sys.stderr)
 
     return result
+
 
 if __name__ == '__main__':
     status = run_gcc()
