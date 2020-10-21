@@ -2288,7 +2288,7 @@ static void msm_vfe_iommu_fault_handler(struct iommu_domain *domain,
 		vfe_dev->page_fault_addr = iova;
 		if (!vfe_dev->buf_mgr || !vfe_dev->buf_mgr->ops ||
 			!vfe_dev->axi_data.num_active_stream) {
-			pr_err("%s:%d buf_mgr %pK active strms %d\n", __func__,
+			pr_debug("%s:%d buf_mgr %pK active strms %d\n", __func__,
 				__LINE__, vfe_dev->buf_mgr,
 				vfe_dev->axi_data.num_active_stream);
 			goto end;
@@ -2296,11 +2296,11 @@ static void msm_vfe_iommu_fault_handler(struct iommu_domain *domain,
 
 		mutex_lock(&vfe_dev->core_mutex);
 		if (vfe_dev->vfe_open_cnt > 0) {
-			pr_err_ratelimited("%s: fault address is %lx\n",
+			pr_debug("%s: fault address is %lx\n",
 				__func__, iova);
 			msm_isp_process_iommu_page_fault(vfe_dev);
 		} else {
-			pr_err("%s: no handling, vfe open cnt = %d\n",
+			pr_debug("%s: no handling, vfe open cnt = %d\n",
 				__func__, vfe_dev->vfe_open_cnt);
 		}
 		mutex_unlock(&vfe_dev->core_mutex);
