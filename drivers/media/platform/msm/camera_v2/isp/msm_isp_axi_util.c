@@ -1847,7 +1847,7 @@ int msm_isp_print_ping_pong_address(struct vfe_device *vfe_dev,
 
 			buf = stream_info->buf[pingpong_bit];
 			if (buf == NULL) {
-				pr_err("%s: buf NULL for stream %x num_isp %d\n",
+				pr_debug("%s: buf NULL for stream %x num_isp %d\n",
 					__func__,
 					stream_info->stream_src,
 					stream_info->num_isp);
@@ -1855,7 +1855,7 @@ int msm_isp_print_ping_pong_address(struct vfe_device *vfe_dev,
 			}
 			temp = buf->mapped_info[0].paddr +
 				buf->mapped_info[0].len;
-			pr_err("%s: stream %x ping bit %d uses buffer %pK-%pK, num_isp %d\n",
+			pr_debug("%s: stream %x ping bit %d uses buffer %pK-%pK, num_isp %d\n",
 				__func__, stream_info->stream_src,
 				pingpong_bit,
 				&buf->mapped_info[0].paddr, &temp,
