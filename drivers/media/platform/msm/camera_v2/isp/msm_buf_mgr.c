@@ -32,7 +32,7 @@
 #include "cam_smmu_api.h"
 
 #undef CDBG
-#define CDBG(fmt, args...) pr_debug(fmt, ##args)
+#define CDBG(fmt, args...)
 
 #define BUF_DEBUG_FULL 0
 #define MAX_LIST_COUNT 100
