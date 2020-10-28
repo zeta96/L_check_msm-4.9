@@ -24,7 +24,7 @@
 #include "linux/iopoll.h"
 
 #undef CDBG
-#define CDBG(fmt, args...) pr_debug(fmt, ##args)
+#define CDBG(fmt, args...)
 
 #define STATS_IDX_BF_SCALE  0
 #define STATS_IDX_HDR_BE    1
