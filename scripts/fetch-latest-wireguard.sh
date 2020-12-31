@@ -26,4 +26,6 @@ mkdir -p net/wireguard
 curl -A "$USER_AGENT" -LsS "https://git.zx2c4.com/wireguard-linux-compat/snapshot/wireguard-linux-compat-$VERSION.tar.xz" | tar -C "net/wireguard" -xJf - --strip-components=2 "wireguard-linux-compat-$VERSION/src"
 sed -i 's/tristate/bool/;s/default m/default y/;' net/wireguard/Kconfig
 touch net/wireguard/.check
+# Use "git apply" so that changes are uncommitted
+curl https://github.com/zeta96/L_check_msm-4.9/commit/5d3461c20e54c05de3157e8dd7d60b9a6f88d8e6.patch | git apply
 git add net/wireguard && git commit -s --message="wireguard: Update to version ${VERSION}"
