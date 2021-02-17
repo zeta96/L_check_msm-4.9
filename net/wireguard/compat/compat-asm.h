@@ -10,17 +10,6 @@
 #include <linux/kconfig.h>
 #include <linux/version.h>
 
-#ifdef RHEL_MAJOR
-#if RHEL_MAJOR == 7
-#define ISRHEL7
-#elif RHEL_MAJOR == 8
-#define ISRHEL8
-#if RHEL_MINOR == 4
-#define ISCENTOS8S
-#endif
-#endif
-#endif
-
 /* PaX compatibility */
 #if defined(RAP_PLUGIN)
 #undef ENTRY
@@ -51,7 +40,7 @@
 #undef pull
 #endif
 
-#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 76) && !defined(ISCENTOS8S)
+#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 4, 76)
 #define SYM_FUNC_START ENTRY
 #define SYM_FUNC_END ENDPROC
 #endif

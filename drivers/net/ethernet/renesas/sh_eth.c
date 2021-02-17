@@ -2411,9 +2411,9 @@ static int sh_eth_close(struct net_device *ndev)
 	/* Free all the skbuffs in the Rx queue and the DMA buffer. */
 	sh_eth_ring_free(ndev);
 
-	mdp->is_opened = 0;
+	pm_runtime_put_sync(&mdp->pdev->dev);
 
-	pm_runtime_put(&mdp->pdev->dev);
+	mdp->is_opened = 0;
 
 	return 0;
 }
