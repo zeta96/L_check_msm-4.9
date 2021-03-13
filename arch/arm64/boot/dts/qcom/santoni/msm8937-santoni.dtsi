@@ -19,3 +19,4 @@
 #include "msm8937-memory-santoni.dtsi"
 #include "msm8937-pinctrl-santoni.dtsi"
 #include "msm8937-spmi-santoni.dtsi"
+#include "msm8937-energy-model.dtsi"

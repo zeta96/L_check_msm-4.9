@@ -1,0 +1,72 @@
+&CPU0 {
+		efficiency = <1126>;
+};
+
+&CPU1 {
+		efficiency = <1126>;
+};
+
+&CPU2 {
+		efficiency = <1126>;
+};
+
+&CPU3 {
+		efficiency = <1126>;
+};
+
+&CPU4 {
+		efficiency = <1024>;
+};
+
+&CPU5 {
+		efficiency = <1024>;
+};
+
+&CPU6 {
+		efficiency = <1024>;
+};
+
+&CPU7 {
+		efficiency = <1024>;
+};
+
+&energy_costs {
+	CPU_COST_0: core-cost0 {
+		busy-cost-data = <
+			  960000  231
+			 1094400  279
+			 1248000  388
+			 1344000  437
+			 1401000  465
+		>;
+	};
+
+	CPU_COST_1: core-cost1 {
+		busy-cost-data = <
+			  768000  179
+			  902400  222
+			  998400  302
+			 1094400  354
+		>;
+	};
+
+	CLUSTER_COST_0: cluster-cost0 {
+		busy-cost-data = <
+			  960000  85
+                         1094400  126
+                         1248000  152
+                         1344000  197
+                         1401000  239		
+		>;
+	};
+
+	CLUSTER_COST_1: cluster-cost1 {
+		busy-cost-data = <
+			  768000  19
+                          902400  29
+                          998400  36
+                         1094400  46
+		>;
+	};
+};
+
