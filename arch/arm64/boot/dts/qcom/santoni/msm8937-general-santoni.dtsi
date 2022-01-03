@@ -68,6 +68,3 @@
 	qcom,thermal-coefficients = [B7 85 B2 49 71 35];
 };
 
-&apps_iommu {
-	qcom,no-aarch64;
-};
