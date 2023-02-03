@@ -436,7 +436,7 @@ module_param_named(
 	debug_mask, smbchg_debug_mask, int, 00600
 );
 
-static int smbchg_parallel_en = 1;
+static int smbchg_parallel_en = 0;
 module_param_named(
 	parallel_en, smbchg_parallel_en, int, 00600
 );
