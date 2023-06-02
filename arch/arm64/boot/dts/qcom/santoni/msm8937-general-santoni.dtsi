@@ -28,8 +28,8 @@
 	qcom,chg-inhibit-fg;
 	qcom,thermal-mitigation = <1600 1500 1400 1200 1000 700 500 300 0>;
 	status = "okay";
-	qcom,vchg_sns-vadc = <&pmi8950_vadc>;
-	qcom,vchg-adc-channel-id = <3>;
+	/*qcom,vchg_sns-vadc = <&pmi8950_vadc>;
+	qcom,vchg-adc-channel-id = <3>;*/
 	qcom,chg-led-sw-controls;
 	qcom,chg-led-support;
 	dpdm-supply = <&usb_otg>;
@@ -51,6 +51,7 @@
 	/delete-node/ xo-therm-adc;
 	/delete-node/ xo-therm-buf-adc;
 	/delete-node/ case-therm-adc;
+        /delete-node/ chg-temp-adc;
 };
 &qpnp_fg {
 	qcom,battery-data = <&qrd_batterydata>;

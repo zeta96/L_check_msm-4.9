@@ -18,6 +18,10 @@
 		};
 	};
 
+	qcom,pmi8950@2 {
+		/delete-node/ vadc@3100;			
+	};
+
 	qcom,pmi8950@3 {
 		labibb: qpnp-labibb-regulator {
 			ibb_regulator: qcom,ibb@dc00 {
@@ -53,9 +57,9 @@
 	/delete-property/ qcom,en-brake;
 };
 
-&usb_otg {
+/*&usb_otg {
 	qcom,usbin-vadc = <&pmi8950_vadc>;
-};
+};*/
 
 &apc_vreg_corner {
 	qcom,cpr-voltage-floor = <1150000 1150000 1250000>;
