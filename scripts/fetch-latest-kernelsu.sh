@@ -53,6 +53,12 @@ cd "$GKI_ROOT"
 
 echo "[+] Done copying kernel su driver to $DRIVER_DIR"
 
+echo '[+] Applyy patch'
+
+curl https://github.com/zeta96/L_check_msm-4.9/commit/274552c1622227416b0ac534ef637d84a611a6de.patch | git apply -v
+
+echo '[+] Done apply patch'
+
 echo '[+] Add kernel su driver to Makefile'
 
 DRIVER_MAKEFILE=$DRIVER_DIR/Makefile
