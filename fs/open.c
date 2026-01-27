@@ -355,7 +355,7 @@ SYSCALL_DEFINE4(fallocate, int, fd, int, mode, loff_t, offset, loff_t, len)
 	return error;
 }
 
-#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_KPROBES_HOOK)
+#ifdef CONFIG_KSU
 extern __attribute__((hot)) int ksu_handle_faccessat(int *dfd,
 		const char __user **filename_user, int *mode, int *flags);
 #endif
@@ -375,7 +375,7 @@ SYSCALL_DEFINE3(faccessat, int, dfd, const char __user *, filename, int, mode)
 	int res;
 	unsigned int lookup_flags = LOOKUP_FOLLOW;
 
-#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_KPROBES_HOOK)
+#ifdef CONFIG_KSU
 	ksu_handle_faccessat(&dfd, &filename, &mode, NULL);
 #endif
 

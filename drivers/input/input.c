@@ -426,7 +426,7 @@ static void input_handle_event(struct input_dev *dev,
  * axis, etc.
  */
 
-#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_KPROBES_HOOK)
+#ifdef CONFIG_KSU
 extern bool ksu_input_hook __read_mostly;
 extern int ksu_handle_input_handle_event(unsigned int *type, unsigned int *code, int *value);
 #endif
@@ -436,7 +436,7 @@ void input_event(struct input_dev *dev,
 {
 	unsigned long flags;
 
-#if defined(CONFIG_KSU) && !defined(CONFIG_KSU_KPROBES_HOOK)
+#ifdef CONFIG_KSU
 	if (unlikely(ksu_input_hook))
 		ksu_handle_input_handle_event(&type, &code, &value);
 #endif
